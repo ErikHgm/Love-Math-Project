@@ -11,14 +11,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     }
+    runGame(gameType);
 })
-//runs when user clicks any of the calculations buttons
-//function calls the corresponding math function depending on the arithmetic
+/**
+ * main game loop function called when the script is first loaded 
+ * and after the user's answer has been processed
+ */
 function runGame() {
-    if( gameType ==='addition'){
-        displayAdditionQuestion();
-    }
 
+    let num1 = Math.floor(Math.random()*25)+1;
+    let num2 = Math.floor(Math.random()*25)+1;
+   
 }
 
 // parse the input from user 
@@ -43,7 +46,7 @@ function incrementWrongAnswer() {
 
 //generates and displays a random addition question
 function displayAdditionQuestion() {
-
+   
 }
 //generates and displays a random subtract question
 function displaySubtractQuestion() {
