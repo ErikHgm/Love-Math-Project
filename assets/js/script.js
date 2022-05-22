@@ -40,10 +40,12 @@ function checkAnswer() {
     let calculatedAnswer = calculateCorrectAnswer();
     let isCorrect = userAnswer === calculatedAnswer[0];
 
-    if(isCorrect) {
+    if (isCorrect) {
         alert('You got it right! :)');
+        incrementScore();
     } else {
         alert(`Sorry you answer was ${userAnswer}. The correct answer is ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
     }
     runGame(calculatedAnswer[1])
 }
@@ -64,16 +66,18 @@ function calculateCorrectAnswer() {
 
 //checks if answer is correct and adds to the correct answer score tally
 function incrementScore() {
-    if(isCorrect) {
-        let score = parseInt(document.getElementById('score').innerText);
-        score += 1;
-    }
+
+    let score = parseInt(document.getElementById('score').innerText);
+    document.getElementById('score').innerText = score + 1;
 
 }
 
+
+
 //checks if answer is wrong and adds to the wrong answer score tally
 function incrementWrongAnswer() {
-
+    let score = parseInt(document.getElementById('incorrect').innerText);
+    document.getElementById('incorrect').innerText = score + 1;
 }
 
 //generates and displays a random addition question
