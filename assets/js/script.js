@@ -25,8 +25,12 @@ function runGame(gameType) {
 
     if (gameType === 'addition') {
         displayAdditionQuestion(num1, num2);
-    } else if (gameType === 'subtraction') {
+    } else if (gameType === 'subtract') {
         displaySubtractQuestion(num1, num2);
+    } else if (gameType === 'multiply') {
+        displayMultiplyQuestion(num1, num2);
+    } else if (gameType === 'division') {
+        displayDivisionQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -58,6 +62,12 @@ function calculateCorrectAnswer() {
 
     if (operator === '+') {
         return [operand1 + operand2, 'addition'];
+    } else if (operator === '-') {
+        return [operand1 - operand2, 'subtract'];
+    } else if (operator === 'x') {
+        return [operand1 * operand2, 'multiply'];
+    } else if (operator === '/') {
+        return [operand1 / operand2, 'division'];
     } else {
         alert(`Unimplemented operator: ${operator}`);
         throw `Unimplemented operator: ${operator}. Aborting!`;
@@ -88,14 +98,22 @@ function displayAdditionQuestion(num1, num2) {
 
 }
 //generates and displays a random subtract question
-function displaySubtractQuestion() {
+function displaySubtractQuestion(num1, num2) {
+    document.getElementById('operand1').textContent = num1 > num2 ? num1: num2;
+    document.getElementById('operand2').textContent = num1 > num2 ? num2: num1;
+    document.getElementById('operator').textContent = '-';
 
 }
 //generates and displays a random multiply question
-function displayMultiplyQuestion() {
+function displayMultiplyQuestion(num1, num2) {
+    document.getElementById('operand1').textContent = num1;
+    document.getElementById('operand2').textContent = num2;
+    document.getElementById('operator').textContent = 'x';
 
 }
 //generates and displays a random division question
-function displayDivisionQuestion() {
-
+function displayDivisionQuestion(num1, num2) {
+    document.getElementById('operand1').textContent = num1;
+    document.getElementById('operand2').textContent = num2;
+    document.getElementById('operator').textContent = '/';
 }
