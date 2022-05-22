@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 let gameType = this.getAttribute('data-type');
                 runGame(gameType);
             }
+            document.getElementById('answer-box').addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    checkAnswer();
+                }
+            })
         })
         runGame('addition');
 
@@ -35,6 +40,8 @@ function runGame(gameType) {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
     }
+    document.getElementById('answer-box').value = '';
+    document.getElementById('answer-box').focus();
 
 }
 
@@ -99,8 +106,8 @@ function displayAdditionQuestion(num1, num2) {
 }
 //generates and displays a random subtract question
 function displaySubtractQuestion(num1, num2) {
-    document.getElementById('operand1').textContent = num1 > num2 ? num1: num2;
-    document.getElementById('operand2').textContent = num1 > num2 ? num2: num1;
+    document.getElementById('operand1').textContent = num1 > num2 ? num1 : num2;
+    document.getElementById('operand2').textContent = num1 > num2 ? num2 : num1;
     document.getElementById('operator').textContent = '-';
 
 }
