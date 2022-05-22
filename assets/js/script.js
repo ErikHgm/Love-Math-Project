@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let button of buttons) {
         button.addEventListener('click', function () {
             if (this.getAttribute('data-type') === 'submit') {
-                alert('You clicked submit!')
+                checkAnswer();
 
             } else {
                 let gameType = this.getAttribute('data-type');
@@ -25,7 +25,7 @@ function runGame(gameType) {
 
     if (gameType === 'addition') {
         displayAdditionQuestion(num1, num2);
-    } else if (gameType === 'subraction') {
+    } else if (gameType === 'subtraction') {
         displaySubtractQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
@@ -36,7 +36,16 @@ function runGame(gameType) {
 
 // parse the input from user 
 function checkAnswer() {
+    let userAnswer = parseInt(document.getElementById('answer-box').value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculatedAnswer[0];
 
+    if(isCorrect) {
+        alert('You got it right! :)');
+    } else {
+        alert(`Sorry you answer was ${userAnswer}. The correct answer is ${calculatedAnswer[0]}!`);
+    }
+    runGame(calculatedAnswer[1])
 }
 
 // calculates the correct answer based on the arithmetic chosen
@@ -55,6 +64,10 @@ function calculateCorrectAnswer() {
 
 //checks if answer is correct and adds to the correct answer score tally
 function incrementScore() {
+    if(isCorrect) {
+        let score = parseInt(document.getElementById('score').innerText);
+        score += 1;
+    }
 
 }
 
