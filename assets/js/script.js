@@ -120,7 +120,7 @@ function displayMultiplyQuestion(num1, num2) {
 }
 //generates and displays a random division question
 function displayDivisionQuestion(num1, num2) {
-    document.getElementById('operand1').textContent = num1;
+    document.getElementById('operand1').textContent = num1 * num2;
     document.getElementById('operand2').textContent = num2;
     document.getElementById('operator').textContent = '/';
 }
